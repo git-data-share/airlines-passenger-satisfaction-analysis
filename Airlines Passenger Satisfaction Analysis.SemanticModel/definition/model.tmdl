@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-CA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["airline_passenger_satisfaction_Staging_Raw","Fact_Satisfaction","Age_Group_Sort","Dim_Passenger","Dim_Flight","Fact_Survey_Ratings","_measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fact_Satisfaction
+ref table Age_Group_Sort
+ref table Fact_Survey_Ratings
+ref table _measures
+
+ref cultureInfo en-US
+

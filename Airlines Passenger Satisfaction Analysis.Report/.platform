@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Airlines Passenger Satisfaction Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "262e0029-5361-403f-ba05-c9feab04e1fa"
+  }
+}

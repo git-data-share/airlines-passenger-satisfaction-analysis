@@ -1,0 +1,340 @@
+table Fact_Satisfaction
+	lineageTag: 5b6f2edb-777c-46ba-ac28-9a4842b8db90
+
+	column Passenger_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fc28d1d-18fa-4771-9e25-234878a4efd4
+		summarizeBy: none
+		sourceColumn: Passenger_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departure_Arrival_Convenience
+		dataType: int64
+		formatString: 0
+		lineageTag: 0faf1269-42c0-41eb-b848-ebc401355967
+		summarizeBy: sum
+		sourceColumn: Departure_Arrival_Convenience
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ease_of_Online_Booking
+		dataType: int64
+		formatString: 0
+		lineageTag: cf7bbeb2-2bd0-4cea-aa3d-f192171fb1b7
+		summarizeBy: sum
+		sourceColumn: Ease_of_Online_Booking
+
+		annotation SummarizationSetBy = Automatic
+
+	column Checkin_Service
+		dataType: int64
+		formatString: 0
+		lineageTag: 02a32c05-8e43-480c-817a-cccc5dd5b8b9
+		summarizeBy: sum
+		sourceColumn: Checkin_Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column Online_Boarding
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b71dae0-631d-43ac-9895-a85a5ffc5ae1
+		summarizeBy: sum
+		sourceColumn: Online_Boarding
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gate_Location
+		dataType: int64
+		formatString: 0
+		lineageTag: c5b963f9-1fae-450b-b6c9-14d294f7f549
+		summarizeBy: sum
+		sourceColumn: Gate_Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Onboard_Service
+		dataType: int64
+		formatString: 0
+		lineageTag: 7c937750-2a52-4279-8979-998be91f244d
+		summarizeBy: sum
+		sourceColumn: Onboard_Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column Seat_Comfort
+		dataType: int64
+		formatString: 0
+		lineageTag: 866f2d20-361b-47d1-85b2-f46b0bfc8e70
+		summarizeBy: sum
+		sourceColumn: Seat_Comfort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Leg_Room_Service
+		dataType: int64
+		formatString: 0
+		lineageTag: cfc5b33e-c535-43c3-90b2-6bae515e1fa6
+		summarizeBy: sum
+		sourceColumn: Leg_Room_Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cleanliness
+		dataType: int64
+		formatString: 0
+		lineageTag: 5407a551-6aed-43df-8e6d-7e8ef2bd581f
+		summarizeBy: sum
+		sourceColumn: Cleanliness
+
+		annotation SummarizationSetBy = Automatic
+
+	column Food_and_Drink
+		dataType: int64
+		formatString: 0
+		lineageTag: 81741331-dfce-45c4-a705-234c703c27b2
+		summarizeBy: sum
+		sourceColumn: Food_and_Drink
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inflight_Service
+		dataType: int64
+		formatString: 0
+		lineageTag: 28d0f51b-7a70-4429-bd80-bc644cce2488
+		summarizeBy: sum
+		sourceColumn: Inflight_Service
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inflight_Wifi
+		dataType: int64
+		formatString: 0
+		lineageTag: cc08e536-8318-49da-bd8b-bff78afa0db8
+		summarizeBy: sum
+		sourceColumn: Inflight_Wifi
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inflight_Entertainment
+		dataType: int64
+		formatString: 0
+		lineageTag: 56ce39be-c11b-4b96-a6d0-27f0c33b156c
+		summarizeBy: sum
+		sourceColumn: Inflight_Entertainment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Baggage_Handling
+		dataType: int64
+		formatString: 0
+		lineageTag: 5914b954-7b61-4de8-bb01-b934812990f2
+		summarizeBy: sum
+		sourceColumn: Baggage_Handling
+
+		annotation SummarizationSetBy = Automatic
+
+	column Satisfaction
+		dataType: string
+		lineageTag: 2e35c4aa-bc2c-4dee-8c90-284670306032
+		summarizeBy: none
+		sourceColumn: Satisfaction
+
+		annotation SummarizationSetBy = Automatic
+
+	column Satisfaction_Binary
+		dataType: int64
+		formatString: 0
+		lineageTag: 7903529b-490f-4805-af05-c272503ef05f
+		summarizeBy: sum
+		sourceColumn: Satisfaction_Binary
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flight_Distance
+		dataType: int64
+		formatString: 0
+		lineageTag: be6d1e33-6054-44ae-87ba-39ad181380b2
+		summarizeBy: sum
+		sourceColumn: Flight_Distance
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departure_Delay
+		dataType: int64
+		formatString: 0
+		lineageTag: 96ee3fe5-ad0a-42d6-8985-e5d594acc3dd
+		summarizeBy: sum
+		sourceColumn: Departure_Delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column Arrival_Delay
+		dataType: int64
+		formatString: 0
+		lineageTag: b1be8e73-049e-4fe7-93a8-a4274fbd78b3
+		summarizeBy: sum
+		sourceColumn: Arrival_Delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flight_Distance_Group
+		dataType: string
+		lineageTag: f3bb156e-32b6-4eb2-98d5-dd2c3632dc3a
+		summarizeBy: none
+		sourceColumn: Flight_Distance_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delay_Group
+		dataType: string
+		lineageTag: 8fcb83a4-efb3-445f-8777-15e6c60f2e21
+		summarizeBy: none
+		sourceColumn: Delay_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 9fcf935c-5289-49f6-9e77-9664aaed2945
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: d7b2abc7-89f1-4d9f-b7af-112602235a72
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Type
+		dataType: string
+		lineageTag: b1f48bf7-51fe-4986-afd7-a0f0d9e62df1
+		summarizeBy: none
+		sourceColumn: Customer_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type_of_Travel
+		dataType: string
+		lineageTag: 2774893a-9c35-4d53-a78a-c26845011b35
+		summarizeBy: none
+		sourceColumn: Type_of_Travel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Class
+		dataType: string
+		lineageTag: 0fb6ad54-1d63-4a7f-a15a-954a8cb859fc
+		summarizeBy: none
+		sourceColumn: Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age_Group
+		dataType: string
+		lineageTag: b9fd5841-71f1-4534-a575-38225d6c98cb
+		summarizeBy: none
+		sourceColumn: Age_Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Flight_Distance_Bucket
+		dataType: string
+		lineageTag: 6e498130-e633-4833-8d30-b3afc37c524a
+		summarizeBy: none
+		sourceColumn: Flight_Distance_Bucket
+		sortByColumn: 'Flight_Bucket_Sort '
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Flight_Bucket_Sort '
+		dataType: int64
+		formatString: 0
+		lineageTag: a81c306b-7a05-4ed6-bd85-d1695987b3d7
+		summarizeBy: sum
+		sourceColumn: "Flight_Bucket_Sort "
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departure_Delay_Bucket
+		dataType: string
+		lineageTag: 4497fbf8-7327-4f81-bea8-1f4b245970e5
+		summarizeBy: none
+		sourceColumn: Departure_Delay_Bucket
+		sortByColumn: Delay_Bucket_Sort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Delay_Bucket_Sort
+		dataType: int64
+		formatString: 0
+		lineageTag: e6106535-0055-4334-97f7-cb0ea729578d
+		summarizeBy: sum
+		sourceColumn: Delay_Bucket_Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Satisfaction = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Taarika\BA-BI-Documents (Taarika)\Projects - BI\Airlines Passenger Satisfaction Analysis\dataset\airline_passenger_satisfaction.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ID", Int64.Type}, {"Gender", type text}, {"Age", Int64.Type}, {"Customer Type", type text}, {"Type of Travel", type text}, {"Class", type text}, {"Flight Distance", Int64.Type}, {"Departure Delay", Int64.Type}, {"Arrival Delay", Int64.Type}, {"Departure and Arrival Time Convenience", Int64.Type}, {"Ease of Online Booking", Int64.Type}, {"Check-in Service", Int64.Type}, {"Online Boarding", Int64.Type}, {"Gate Location", Int64.Type}, {"On-board Service", Int64.Type}, {"Seat Comfort", Int64.Type}, {"Leg Room Service", Int64.Type}, {"Cleanliness", Int64.Type}, {"Food and Drink", Int64.Type}, {"In-flight Service", Int64.Type}, {"In-flight Wifi Service", Int64.Type}, {"In-flight Entertainment", Int64.Type}, {"Baggage Handling", Int64.Type}, {"Satisfaction", type text}}),
+				    #"Removed Blank Rows" = Table.SelectRows(#"Changed Type", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Blank Rows",{{"ID", "Passenger_ID"}, {"Customer Type", "Customer_Type"}, {"Type of Travel", "Type_of_Travel"}, {"Flight Distance", "Flight_Distance"}, {"Departure Delay", "Departure_Delay"}, {"Arrival Delay", "Arrival_Delay"}, {"Departure and Arrival Time Convenience", "Departure_Arrival_Convenience"}, {"Ease of Online Booking", "Ease_of_Online_Booking"}, {"Check-in Service", "Checkin_Service"}, {"Online Boarding", "Online_Boarding"}, {"Gate Location", "Gate_Location"}, {"On-board Service", "Onboard_Service"}, {"Seat Comfort", "Seat_Comfort"}, {"Leg Room Service", "Leg_Room_Service"}, {"Food and Drink", "Food_and_Drink"}, {"In-flight Service", "Inflight_Service"}, {"In-flight Wifi Service", "Inflight_Wifi"}, {"In-flight Entertainment", "Inflight_Entertainment"}, {"Baggage Handling", "Baggage_Handling"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Satisfaction_Binary", each if[Satisfaction] = "Satisfied" then 1 else 0),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Age_Group", each if [Age] < 18 then "Under 18"
+				else if [Age] <= 25 then "18-25"
+				else if [Age] <= 35 then "26-35"
+				else if [Age] <= 45 then "36-45"
+				else if [Age] <= 55 then "46-55"
+				else if [Age] <= 65 then "56-65"
+				else "65+"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"Satisfaction_Binary", Int64.Type}}),
+				    #"Added Custom2" = Table.AddColumn(#"Changed Type1", "Flight_Distance_Group", each if [Flight_Distance] <= 1000 then "Short Haul"
+				else if [Flight_Distance] <= 2500 then "Medium Haul"
+				else "Long Haul"),
+				    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "Delay_Group", each if [Departure_Delay] = 0 then "No Delay"
+				else if [Departure_Delay] <= 30 then "Minor Delay"
+				else "Major Delay"),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom3",{"Passenger_ID", "Gender", "Age", "Customer_Type", "Type_of_Travel", "Class", "Flight_Distance", "Departure_Delay", "Arrival_Delay", "Departure_Arrival_Convenience", "Ease_of_Online_Booking", "Checkin_Service", "Online_Boarding", "Gate_Location", "Onboard_Service", "Seat_Comfort", "Leg_Room_Service", "Cleanliness", "Food_and_Drink", "Inflight_Service", "Inflight_Wifi", "Inflight_Entertainment", "Baggage_Handling", "Satisfaction", "Satisfaction_Binary", "Age_Group", "Flight_Distance_Group", "Delay_Group"}),
+				    #"Added Custom4" = Table.AddColumn(#"Removed Other Columns", "Flight_Distance_Bucket", each if [Flight_Distance] < 1000 then "< 1K mi"
+				else if [Flight_Distance] < 2000 then "1K - 2K mi"
+				else if [Flight_Distance] < 3000 then "2K - 3K mi"
+				else if [Flight_Distance] < 4000 then "3K - 4K mi"
+				else "> 4K mi"),
+				    #"Added Custom5" = Table.AddColumn(#"Added Custom4", "Flight_Bucket_Sort ", each if [Flight_Distance] < 1000 then 1
+				else if [Flight_Distance] < 2000 then 2
+				else if [Flight_Distance] < 3000 then 3
+				else if [Flight_Distance] < 4000 then 4
+				else 5),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom5",{{"Flight_Distance_Bucket", type text}, {"Flight_Bucket_Sort ", Int64.Type}}),
+				    #"Added Custom6" = Table.AddColumn(#"Changed Type2", "Departure_Delay_Bucket", each if [Departure_Delay] = 0 then "No Delay"
+				else if [Departure_Delay] <= 30 then "1 - 30 min"
+				else if [Departure_Delay] <= 60 then "31 - 60 min"
+				else "60+ min"),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Added Custom6",{{"Departure_Delay_Bucket", type text}}),
+				    #"Added Custom7" = Table.AddColumn(#"Changed Type3", "Delay_Bucket_Sort", each if [Departure_Delay] = 0 then 1
+				else if [Departure_Delay] <= 30 then 2
+				else if [Departure_Delay] <= 60 then 3
+				else 4),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Added Custom7",{{"Delay_Bucket_Sort", Int64.Type}})
+				in
+				    #"Changed Type4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

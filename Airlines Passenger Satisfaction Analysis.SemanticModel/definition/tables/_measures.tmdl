@@ -1,0 +1,399 @@
+table _measures
+	lineageTag: c3e12a69-2477-4e44-9c62-b70424de5161
+
+	measure 'Total Passengers' =
+			
+			COUNTROWS(Fact_Satisfaction)
+		formatString: #,0
+		lineageTag: 9a85a1f8-38b3-400b-8cdc-a92e8058961f
+
+	measure 'Total Satisfied' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Satisfaction,
+			    Fact_Satisfaction[Satisfaction] = "Satisfied")
+			)
+		formatString: 0
+		lineageTag: 0c6c8f39-aa7f-4ae7-b624-e77e3979e1db
+
+	measure 'Total Dissatisfied' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Satisfaction,
+			    Fact_Satisfaction[Satisfaction] = "Neutral or Dissatisfied")
+			)
+		formatString: 0
+		lineageTag: 386030f2-678a-4261-aa33-30e69511cc2d
+
+	measure 'Satisfaction Rate %' =
+			
+			DIVIDE([Total Satisfied], [Total Passengers], 0)
+		formatString: 0%;-0%;0%
+		lineageTag: 48abd63c-b165-4ea2-95fc-8dffd37ce20d
+
+	measure 'Dissatisfaction Rate %' = ```
+			
+			DIVIDE([Total Dissatisfied], [Total Passengers], 0) 
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 970fccea-b0c9-404c-b8c8-e9c40a2eb0e8
+
+	measure 'First Time Passengers' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Satisfaction,
+			    Fact_Satisfaction[Customer_Type] = "First-time")
+			)
+		formatString: #,0
+		lineageTag: e8f04044-cb71-4c6f-9ea4-c64c8237ee1e
+
+	measure 'Returning Passengers' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Satisfaction,
+			    Fact_Satisfaction[Customer_Type] = "Returning")
+			)
+		formatString: #,0
+		lineageTag: 35b2942c-b732-45a5-a145-8a822b1e22b5
+
+	measure 'First Time %' =
+			
+			DIVIDE([First Time Passengers], [Total Passengers], 0)
+		formatString: 0%;-0%;0%
+		lineageTag: edb1c1be-cd1f-4373-8644-f2ddbcb2ddba
+
+	measure 'Returning %' = ```
+			
+			DIVIDE([Returning Passengers], [Total Passengers], 0) 
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 8bd4d384-6365-4a71-aff4-676da6604087
+
+	measure 'Male Passengers %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			    Fact_Satisfaction[Gender] = "Male")),
+			    [Total Passengers], 0
+			) * 100
+		lineageTag: efcadc63-2dab-4467-9d2f-462bf46df648
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Female Passengers %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			    Fact_Satisfaction[Gender] = "Female")),
+			    [Total Passengers], 0
+			) * 100
+		lineageTag: 9737553b-cd96-43a5-97b7-f5a947e7c942
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Flight Distance' =
+			
+			AVERAGE(Fact_Satisfaction[Flight_Distance])
+		lineageTag: 5d00b6fd-79d7-4d47-b86a-9bb62e4c4b46
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Departure Delay' =
+			
+			AVERAGE(Fact_Satisfaction[Departure_Delay])
+		lineageTag: 49c7787b-c1d8-412b-99d5-855b5d2bbab3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Arrival Delay' =
+			
+			AVERAGE(Fact_Satisfaction[Arrival_Delay])
+		lineageTag: 363bc2ef-9593-44b2-b205-840bbe028e1f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Service Rating' =
+			
+			AVERAGE(Fact_Survey_Ratings[Rating])
+		lineageTag: fd38042d-4631-46cf-8e76-f6aa746f6908
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Wifi Rating' =
+			
+			CALCULATE(
+			    AVERAGE(Fact_Survey_Ratings[Rating]),
+			    Fact_Survey_Ratings[Service_Name] = "Inflight_Wifi"
+			)
+		lineageTag: 02fbe50f-86c6-4f20-9fc5-b5a442125272
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Gate Location Rating' =
+			
+			CALCULATE(
+			    AVERAGE(Fact_Survey_Ratings[Rating]),
+			    Fact_Survey_Ratings[Service_Name] = "Gate_Location"
+			)
+		lineageTag: 79c8f550-6aa8-4adf-bc57-7f67c377858b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Online Booking Rating' =
+			
+			CALCULATE(
+			    AVERAGE(Fact_Survey_Ratings[Rating]),
+			    Fact_Survey_Ratings[Service_Name] = "Ease_of_Online_Booking"
+			)
+		lineageTag: d5e5f0cc-5fe6-423d-ac89-998bb1aa2238
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Personal Travel Dissatisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Type_of_Travel] = "Personal" &&
+			        Fact_Satisfaction[Satisfaction] = "Neutral or Dissatisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Type_of_Travel] = "Personal")),
+			    0
+			) * 100
+		lineageTag: 257a5e73-3cc8-4306-b466-23adfc54b568
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Economy Dissatisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Class] = "Economy" &&
+			        Fact_Satisfaction[Satisfaction] = "Neutral or Dissatisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Class] = "Economy")),
+			    0
+			) * 100
+		lineageTag: b14a8261-f5e1-417b-8510-ce34fdb2097a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'First Time Dissatisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Customer_Type] = "First-time" &&
+			        Fact_Satisfaction[Satisfaction] = "Neutral or Dissatisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Customer_Type] = "First-time")),
+			    0
+			) * 100
+		lineageTag: 47263429-b3e9-476d-b300-ac7b97deff3a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Senior Dissatisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Age_Group] = "65+" &&
+			        Fact_Satisfaction[Satisfaction] = "Neutral or Dissatisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Age_Group] = "65+")),
+			    0
+			) * 100
+		lineageTag: 0dd4488f-cb7c-4f87-b5ef-43b7872031ea
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Short Haul Dissatisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Flight_Distance_Group] = "Short Haul" &&
+			        Fact_Satisfaction[Satisfaction] = "Neutral or Dissatisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Flight_Distance_Group] = "Short Haul")),
+			    0
+			) * 100
+		lineageTag: ba6000c6-cc4f-405b-b19f-01fe150f32de
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Economy Plus Dissatisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Class] = "Economy Plus" &&
+			        Fact_Satisfaction[Satisfaction] = "Neutral or Dissatisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Class] = "Economy Plus")),
+			    0
+			) * 100
+		lineageTag: 900747d5-106f-423e-a277-151b463b8332
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'No Delay Satisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Departure_Delay] = 0 &&
+			        Fact_Satisfaction[Satisfaction] = "Satisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Departure_Delay] = 0)),
+			    0
+			) * 100
+		lineageTag: f2fccee7-67aa-416f-a9f0-6b258d8d59b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Business Satisfied %' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Class] = "Business" &&
+			        Fact_Satisfaction[Satisfaction] = "Satisfied")),
+			    COUNTROWS(FILTER(Fact_Satisfaction,
+			        Fact_Satisfaction[Class] = "Business")),
+			    0
+			) * 100
+		lineageTag: e45818e7-d2f5-4ac4-8dcc-266e4c5a7a27
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Count Rating 1' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Survey_Ratings,
+			    Fact_Survey_Ratings[Rating] = 1)
+			)
+		formatString: 0
+		lineageTag: c37208b0-f118-4637-91b4-e18b2fc0d6f0
+
+	measure 'Count Rating 2' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Survey_Ratings,
+			    Fact_Survey_Ratings[Rating] = 2)
+			)
+		formatString: 0
+		lineageTag: 6d177803-155d-4aef-a3cb-989299c137cc
+
+	measure 'Count Rating 3' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Survey_Ratings,
+			    Fact_Survey_Ratings[Rating] = 3)
+			)
+		formatString: 0
+		lineageTag: fdccd366-90db-4814-9d79-5297ccefb914
+
+	measure 'Count Rating 4' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Survey_Ratings,
+			    Fact_Survey_Ratings[Rating] = 4)
+			)
+		formatString: 0
+		lineageTag: 4ad33e87-9092-4c45-a2b3-1ffe8aa64aa7
+
+	measure 'Count Rating 5' =
+			
+			COUNTROWS(
+			    FILTER(Fact_Survey_Ratings,
+			    Fact_Survey_Ratings[Rating] = 5)
+			)
+		formatString: 0
+		lineageTag: f80e5c18-531c-4c6d-a85c-8c79aa5bf875
+
+	measure '% Low Ratings' = ```
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Survey_Ratings,
+			    Fact_Survey_Ratings[Rating] <= 2)),
+			    COUNTROWS(Fact_Survey_Ratings),
+			    0
+			) 
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: cd5cda53-d5ad-4d90-bd3a-114298624433
+
+	measure '% High Ratings' =
+			
+			DIVIDE(
+			    COUNTROWS(FILTER(Fact_Survey_Ratings,
+			    Fact_Survey_Ratings[Rating] >= 4)),
+			    COUNTROWS(Fact_Survey_Ratings),
+			    0
+			)
+		formatString: 0%;-0%;0%
+		lineageTag: c1218aa5-5318-40a9-8c48-6009ceb40f31
+
+	measure 'Avg Pre-Boarding' =
+			
+			CALCULATE(
+			    AVERAGE(Fact_Survey_Ratings[Rating]),
+			    Fact_Survey_Ratings[Service_Category] = "Pre-Boarding"
+			)
+		lineageTag: e4f3fb20-bd30-40eb-bd41-b6653f34c2fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg In-Flight' =
+			
+			CALCULATE(
+			    AVERAGE(Fact_Survey_Ratings[Rating]),
+			    Fact_Survey_Ratings[Service_Category] = "In-Flight Comfort"
+			)
+		lineageTag: c7d6a7f4-d875-4490-8920-e0ed08e86e59
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Essential' =
+			
+			CALCULATE(
+			    AVERAGE(Fact_Survey_Ratings[Rating]),
+			    Fact_Survey_Ratings[Service_Category] = "Essential Services"
+			)
+		lineageTag: 26501a43-5d0e-440a-baf0-210be54e8779
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Low Ratings by Service' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        COUNTROWS(Fact_Survey_Ratings),
+			        Fact_Survey_Ratings[Rating] <= 2
+			    ),
+			    CALCULATE(
+			        COUNTROWS(Fact_Survey_Ratings),
+			        ALL(Fact_Survey_Ratings[Rating])
+			    ),
+			    0
+			)
+		formatString: 0%;-0%;0%
+		lineageTag: d0fb47c5-0bcd-4e39-b466-adf686ee215d
+
+	column Column1
+		dataType: string
+		isHidden
+		lineageTag: cd2b91eb-2500-4936-9376-edc028f93e72
+		summarizeBy: none
+		sourceColumn: Column1
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

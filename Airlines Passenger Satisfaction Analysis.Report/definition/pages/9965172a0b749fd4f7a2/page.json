@@ -1,0 +1,99 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "9965172a0b749fd4f7a2",
+  "displayName": "Key Metrics",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#1B4332'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "718785a02c5dbd7ccbc8",
+      "target": "f001199935cc9a148054",
+      "type": "NoFilter"
+    },
+    {
+      "source": "718785a02c5dbd7ccbc8",
+      "target": "125372ec33a9c297c12e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "718785a02c5dbd7ccbc8",
+      "target": "5fc273d0b15bc673e921",
+      "type": "NoFilter"
+    },
+    {
+      "source": "718785a02c5dbd7ccbc8",
+      "target": "581cc1263429b0ebb3de",
+      "type": "NoFilter"
+    },
+    {
+      "source": "718785a02c5dbd7ccbc8",
+      "target": "77c650506f9c253e9ac9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d7b3b23ae0d734a88a18",
+      "target": "581cc1263429b0ebb3de",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d7b3b23ae0d734a88a18",
+      "target": "f001199935cc9a148054",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d7b3b23ae0d734a88a18",
+      "target": "125372ec33a9c297c12e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d7b3b23ae0d734a88a18",
+      "target": "5fc273d0b15bc673e921",
+      "type": "NoFilter"
+    },
+    {
+      "source": "d7b3b23ae0d734a88a18",
+      "target": "77c650506f9c253e9ac9",
+      "type": "NoFilter"
+    }
+  ]
+}
