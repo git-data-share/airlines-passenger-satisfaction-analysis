@@ -1,7 +1,6 @@
 
 # Airlines Passenger Satisfaction Analysis
 
-## Problem Statement
 Airlines collect large volumes of passenger feedback, but this data is often unstructured and difficult to interpret. As a result, it becomes challenging to identify key drivers of satisfaction and areas that require improvement.
 
 The objective of this project is to analyze passenger feedback data to:
