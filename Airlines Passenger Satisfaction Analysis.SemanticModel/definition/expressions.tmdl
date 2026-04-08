@@ -1,0 +1,78 @@
+expression airline_passenger_satisfaction_Staging_Raw =
+		let
+		    Source = Csv.Document(File.Contents("D:\Taarika\BA-BI-Documents (Taarika)\Projects - BI\Airlines Passenger Satisfaction Analysis\dataset\airline_passenger_satisfaction.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ID", Int64.Type}, {"Gender", type text}, {"Age", Int64.Type}, {"Customer Type", type text}, {"Type of Travel", type text}, {"Class", type text}, {"Flight Distance", Int64.Type}, {"Departure Delay", Int64.Type}, {"Arrival Delay", Int64.Type}, {"Departure and Arrival Time Convenience", Int64.Type}, {"Ease of Online Booking", Int64.Type}, {"Check-in Service", Int64.Type}, {"Online Boarding", Int64.Type}, {"Gate Location", Int64.Type}, {"On-board Service", Int64.Type}, {"Seat Comfort", Int64.Type}, {"Leg Room Service", Int64.Type}, {"Cleanliness", Int64.Type}, {"Food and Drink", Int64.Type}, {"In-flight Service", Int64.Type}, {"In-flight Wifi Service", Int64.Type}, {"In-flight Entertainment", Int64.Type}, {"Baggage Handling", Int64.Type}, {"Satisfaction", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 3466853d-21c6-4e20-ab52-09591a44f36d
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Dim_Flight =
+		let
+		    Source = Csv.Document(File.Contents("D:\Taarika\BA-BI-Documents (Taarika)\Projects - BI\Airlines Passenger Satisfaction Analysis\dataset\airline_passenger_satisfaction.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ID", Int64.Type}, {"Gender", type text}, {"Age", Int64.Type}, {"Customer Type", type text}, {"Type of Travel", type text}, {"Class", type text}, {"Flight Distance", Int64.Type}, {"Departure Delay", Int64.Type}, {"Arrival Delay", Int64.Type}, {"Departure and Arrival Time Convenience", Int64.Type}, {"Ease of Online Booking", Int64.Type}, {"Check-in Service", Int64.Type}, {"Online Boarding", Int64.Type}, {"Gate Location", Int64.Type}, {"On-board Service", Int64.Type}, {"Seat Comfort", Int64.Type}, {"Leg Room Service", Int64.Type}, {"Cleanliness", Int64.Type}, {"Food and Drink", Int64.Type}, {"In-flight Service", Int64.Type}, {"In-flight Wifi Service", Int64.Type}, {"In-flight Entertainment", Int64.Type}, {"Baggage Handling", Int64.Type}, {"Satisfaction", type text}}),
+		    #"Removed Blank Rows" = Table.SelectRows(#"Changed Type", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+		    #"Renamed Columns" = Table.RenameColumns(#"Removed Blank Rows",{{"ID", "Passenger_ID"}, {"Customer Type", "Customer_Type"}, {"Type of Travel", "Type_of_Travel"}, {"Flight Distance", "Flight_Distance"}, {"Departure Delay", "Departure_Delay"}, {"Arrival Delay", "Arrival_Delay"}, {"Departure and Arrival Time Convenience", "Departure_Arrival_Convenience"}, {"Ease of Online Booking", "Ease_of_Online_Booking"}, {"Check-in Service", "Checkin_Service"}, {"Online Boarding", "Online_Boarding"}, {"Gate Location", "Gate_Location"}, {"On-board Service", "Onboard_Service"}, {"Seat Comfort", "Seat_Comfort"}, {"Leg Room Service", "Leg_Room_Service"}, {"Food and Drink", "Food_and_Drink"}, {"In-flight Service", "Inflight_Service"}, {"In-flight Wifi Service", "Inflight_Wifi"}, {"In-flight Entertainment", "Inflight_Entertainment"}, {"Baggage Handling", "Baggage_Handling"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Satisfaction_Binary", each if[Satisfaction] = "Satisfied" then 1 else 0),
+		    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Age_Group", each if [Age] < 18 then "Under 18"
+		else if [Age] <= 25 then "18-25"
+		else if [Age] <= 35 then "26-35"
+		else if [Age] <= 45 then "36-45"
+		else if [Age] <= 55 then "46-55"
+		else if [Age] <= 65 then "56-65"
+		else "65+"),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"Satisfaction_Binary", Int64.Type}}),
+		    #"Added Custom2" = Table.AddColumn(#"Changed Type1", "Flight_Distance_Group", each if [Flight_Distance] <= 1000 then "Short Haul"
+		else if [Flight_Distance] <= 2500 then "Medium Haul"
+		else "Long Haul"),
+		    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "Delay_Group", each if [Departure_Delay] = 0 then "No Delay"
+		else if [Departure_Delay] <= 30 then "Minor Delay"
+		else "Major Delay"),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom3",{"Passenger_ID", "Flight_Distance", "Departure_Delay", "Arrival_Delay", "Flight_Distance_Group", "Delay_Group"}),
+		    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"Passenger_ID"})
+		in
+		    #"Removed Duplicates"
+	lineageTag: 59735e45-d8f3-47b8-949a-1afc450d9dba
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Dim_Passenger =
+		let
+		    Source = Csv.Document(File.Contents("D:\Taarika\BA-BI-Documents (Taarika)\Projects - BI\Airlines Passenger Satisfaction Analysis\dataset\airline_passenger_satisfaction.csv"),[Delimiter=",", Columns=24, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ID", Int64.Type}, {"Gender", type text}, {"Age", Int64.Type}, {"Customer Type", type text}, {"Type of Travel", type text}, {"Class", type text}, {"Flight Distance", Int64.Type}, {"Departure Delay", Int64.Type}, {"Arrival Delay", Int64.Type}, {"Departure and Arrival Time Convenience", Int64.Type}, {"Ease of Online Booking", Int64.Type}, {"Check-in Service", Int64.Type}, {"Online Boarding", Int64.Type}, {"Gate Location", Int64.Type}, {"On-board Service", Int64.Type}, {"Seat Comfort", Int64.Type}, {"Leg Room Service", Int64.Type}, {"Cleanliness", Int64.Type}, {"Food and Drink", Int64.Type}, {"In-flight Service", Int64.Type}, {"In-flight Wifi Service", Int64.Type}, {"In-flight Entertainment", Int64.Type}, {"Baggage Handling", Int64.Type}, {"Satisfaction", type text}}),
+		    #"Removed Blank Rows" = Table.SelectRows(#"Changed Type", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+		    #"Renamed Columns" = Table.RenameColumns(#"Removed Blank Rows",{{"ID", "Passenger_ID"}, {"Customer Type", "Customer_Type"}, {"Type of Travel", "Type_of_Travel"}, {"Flight Distance", "Flight_Distance"}, {"Departure Delay", "Departure_Delay"}, {"Arrival Delay", "Arrival_Delay"}, {"Departure and Arrival Time Convenience", "Departure_Arrival_Convenience"}, {"Ease of Online Booking", "Ease_of_Online_Booking"}, {"Check-in Service", "Checkin_Service"}, {"Online Boarding", "Online_Boarding"}, {"Gate Location", "Gate_Location"}, {"On-board Service", "Onboard_Service"}, {"Seat Comfort", "Seat_Comfort"}, {"Leg Room Service", "Leg_Room_Service"}, {"Food and Drink", "Food_and_Drink"}, {"In-flight Service", "Inflight_Service"}, {"In-flight Wifi Service", "Inflight_Wifi"}, {"In-flight Entertainment", "Inflight_Entertainment"}, {"Baggage Handling", "Baggage_Handling"}}),
+		    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Satisfaction_Binary", each if[Satisfaction] = "Satisfied" then 1 else 0),
+		    #"Added Custom1" = Table.AddColumn(#"Added Custom", "Age_Group", each if [Age] < 18 then "Under 18"
+		else if [Age] <= 25 then "18-25"
+		else if [Age] <= 35 then "26-35"
+		else if [Age] <= 45 then "36-45"
+		else if [Age] <= 55 then "46-55"
+		else if [Age] <= 65 then "56-65"
+		else "65+"),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom1",{{"Satisfaction_Binary", Int64.Type}}),
+		    #"Added Custom2" = Table.AddColumn(#"Changed Type1", "Flight_Distance_Group", each if [Flight_Distance] <= 1000 then "Short Haul"
+		else if [Flight_Distance] <= 2500 then "Medium Haul"
+		else "Long Haul"),
+		    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "Delay_Group", each if [Departure_Delay] = 0 then "No Delay"
+		else if [Departure_Delay] <= 30 then "Minor Delay"
+		else "Major Delay"),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Added Custom3",{"Passenger_ID", "Gender", "Age", "Customer_Type", "Type_of_Travel", "Class", "Age_Group"}),
+		    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns", {"Passenger_ID"}),
+		    #"Changed Type2" = Table.TransformColumnTypes(#"Removed Duplicates",{{"Age_Group", type text}})
+		in
+		    #"Changed Type2"
+	lineageTag: 16a33a48-276c-452e-a3d8-51c4c071dde9
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,8 @@
+relationship ab19ae3e-39d3-a894-372e-7fbcf0f93d5b
+	fromColumn: Fact_Survey_Ratings.Passenger_ID
+	toColumn: Fact_Satisfaction.Passenger_ID
+
+relationship 214d4d85-0bd3-1a89-960b-b5f7e445d6f9
+	fromColumn: Fact_Satisfaction.Age_Group
+	toColumn: Age_Group_Sort.Age_Group
+
