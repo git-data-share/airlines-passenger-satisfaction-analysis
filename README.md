@@ -9,18 +9,8 @@ The objective of this project is to analyze passenger feedback data to:
 - Understand customer behavior across different segments
 - Provide actionable insights to improve passenger experience
 
-
-## Overview
 This Power BI dashboard provides a comprehensive analysis of airline passenger satisfaction using survey and operational data.
-
-The dashboard is structured into four main pages:
-- Passengers
-- Key Metrics
-- Overview
-- Feedback Analysis
-
 It enables users to explore satisfaction trends based on service quality, passenger demographics, travel behavior, and operational factors such as delays.
-
 
 ## Key Business Questions
 - What is the overall passenger satisfaction rate?
@@ -30,12 +20,10 @@ It enables users to explore satisfaction trends based on service quality, passen
 - Which travel class has the highest satisfaction?
 - How do age group and travel type influence experience?
 
-
 ### 1. Passengers Page
 
 ![Power BI Report](https://github.com/git-data-share/airlines-passenger-satisfaction-analysis/raw/main/images/passengers.jpg)
 
-**Purpose:**  
 To analyze passenger demographics and understand how satisfaction varies across different customer segments.
 
 **Key Insights:**
@@ -46,15 +34,12 @@ To analyze passenger demographics and understand how satisfaction varies across 
 - Younger (under 18) and older (65+) passengers show higher dissatisfaction.
 - Business travel customers are more satisfied compared to personal travel customers.
 
-**Conclusion:**  
 Customer satisfaction varies significantly by class, age group, and travel type, with economy passengers and extreme age groups being key areas of concern.
-
 
 ### 2. Key Metrics Page
 
 ![Power BI Report](https://github.com/git-data-share/airlines-passenger-satisfaction-analysis/raw/main/images/key.jpg)
 
-**Purpose:**  
 To evaluate operational performance and identify factors influencing satisfaction.
 
 **Key Insights:**
@@ -65,7 +50,6 @@ To evaluate operational performance and identify factors influencing satisfactio
 - Highest rated services include inflight service and baggage handling (3.6 rating).
 - Lowest rated services include inflight Wi-Fi (2.8) and online booking (2.9).
 
-**Conclusion:**  
 Delays impact satisfaction, but service quality plays a more critical role in determining passenger experience.
 
 
@@ -73,19 +57,12 @@ Delays impact satisfaction, but service quality plays a more critical role in de
 
 ![Power BI Report](https://github.com/git-data-share/airlines-passenger-satisfaction-analysis/raw/main/images/overview.jpg)
 
-**Purpose:**  
 To highlight the worst-performing service areas and provide recommendations.
 
 **Key Insights:**
 - Inflight Wi-Fi, online booking, and gate location are the lowest rated services.
 - Overall dissatisfaction rate is 57 percent, which is higher than the satisfaction rate.
-
-**Recommendations:**
-- Improve Wi-Fi reliability and speed
-- Enhance online booking experience with better user interface
-- Improve gate communication and accessibility
-
-**Conclusion:**  
+  
 A few key service areas are responsible for a large portion of dissatisfaction and should be prioritized.
 
 
@@ -93,7 +70,6 @@ A few key service areas are responsible for a large portion of dissatisfaction a
 
 ![Power BI Report](https://github.com/git-data-share/airlines-passenger-satisfaction-analysis/raw/main/images/feedback.jpg)
 
-**Purpose:**  
 To analyze detailed service ratings and overall feedback distribution.
 
 **Key Insights:**
@@ -105,7 +81,6 @@ To analyze detailed service ratings and overall feedback distribution.
   - Essential services: 3.37
 - Inflight Wi-Fi and online booking have the highest percentage of low ratings.
 
-**Conclusion:**  
 Passenger experience is inconsistent, with a mix of highly satisfied and highly dissatisfied customers, driven mainly by specific service issues.
 
 ## Challenges Identified from Analysis
@@ -132,8 +107,6 @@ Passenger experience is inconsistent, with a mix of highly satisfied and highly 
 
 ## Conclusion
 The dashboard demonstrates that passenger satisfaction is influenced more by service quality than operational delays.
-
-Key findings include:
 - Economy passengers and certain age groups are less satisfied
 - A few critical services are major contributors to dissatisfaction
 - Improving these areas can significantly enhance overall customer experience and loyalty
