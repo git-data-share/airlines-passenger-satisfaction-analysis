@@ -120,17 +120,15 @@ Passenger experience is inconsistent, with a mix of highly satisfied and highly 
 
 ## Recommendations
 
-**Business Recommendations:**
-- Focus on improving low-performing services such as Wi-Fi, online booking, and gate experience
-- Enhance the experience for economy class passengers
-- Provide targeted improvements for first-time passengers and senior citizens
-- Ensure consistency in service quality across all touchpoints
-
-**Analytics Recommendations:**
-- Track satisfaction trends over time
-- Introduce Net Promoter Score (NPS) for deeper analysis
-- Enable real-time feedback tracking for faster decision-making
-
+- Improve inflight Wi-Fi by increasing speed, stability, and accessibility, as it is the lowest-rated service and a major driver of dissatisfaction.
+- Simplify and optimize the online booking experience by improving UI/UX, reducing steps, and offering clearer navigation to reduce customer friction.
+- Enhance gate location experience by improving airport signage, real-time updates, and mobile notifications to ensure smoother passenger movement.
+- Focus on improving economy and economy plus class experience by enhancing comfort, service quality, and perceived value.
+- Strengthen first-time passenger experience through better guidance, onboarding communication, and support during the journey.
+- Provide personalized services for under 18 and senior (65+) passengers to address their specific needs and improve satisfaction.
+- Improve short-distance flight experience by ensuring consistent service quality regardless of flight duration.
+- Focus on overall service quality improvement instead of only reducing delays, as satisfaction is not strongly dependent on delays alone.
+- Standardize service delivery across all categories to reduce inconsistency and ensure a more uniform customer experience.
 
 ## Conclusion
 The dashboard demonstrates that passenger satisfaction is influenced more by service quality than operational delays.
